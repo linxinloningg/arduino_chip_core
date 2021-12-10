@@ -2,33 +2,18 @@
 
 #### 项目列表：
 
-* ###### 利用51单片机和0.96英寸oled外配ds18b20测温芯片，来进行测温并在oled上显示温度以及系统已经运行时长
+* ###### 利用esp8266制作b站小电视(天气，留言，粉丝) 
 
-  * [仓库：51-0.96oled-iic-ds18b20](https://github.com/linxinloningg/51_chip_core/tree/main/51-0.96oled-iic-ds18b20)
+  * [仓库：esp8266-bilitv](https://github.com/linxinloningg/arduino_chip_core/tree/main/esp8266-bilitv)
 
-* ###### 利用51单片机+HC-SR04+51单片机制造超声波测距模块
+* ###### 用esp8266刷固件，可制作成可对wifi进行ddos的利器
 
-  * [仓库：51-hcsr04](https://github.com/linxinloningg/51_chip_core/tree/main/51-hcsr04)
-    * [测距模块](https://blog.csdn.net/linxinloningg/article/details/107169808)
+  * [仓库：esp8266-wifikiller](https://github.com/linxinloningg/arduino_chip_core/tree/main/esp8266-wifikiller)
 
-* ###### 利用51单片机+oled+HC-SR04所测数据进行打印
+* ###### 利用arduino_nano板操作三自由度机械臂
 
-  * [仓库：51-hcsr04-oled](https://github.com/linxinloningg/51_chip_core/tree/main/51-hcsr04-oled)
-    * [oled打印](https://blog.csdn.net/linxinloningg/article/details/107169808)
+  * [仓库：nano-memage](https://github.com/linxinloningg/arduino_chip_core/tree/main/nano-memage)
 
-* ###### 使用51单片机+lcd1602转接板-iic接口进行显示
+* ###### 利用arduino_nano板制作一个检测湿温自动浇水小花盆
 
-  * [仓库：51-lcd1602](https://github.com/linxinloningg/51_chip_core/tree/main/51-lcd1602)
-    * [lcd1602转接板](https://blog.csdn.net/linxinloningg/article/details/108502611)
-
-* ###### 利用51单片机+0.96寸iic接口oled显示图片或动图
-
-  * [仓库：51-oled](https://github.com/linxinloningg/51_chip_core/tree/main/51-oled)
-    * [oled显示图片或动图](https://blog.csdn.net/linxinloningg/article/details/107710686)
-
-* ###### 利用51单片机+hc595芯片配合在led点阵上玩贪吃蛇
-
-  * [仓库：51-led-hc595](https://github.com/linxinloningg/51_chip_core/tree/main/51-led-hc595)
-    * [显示贪吃蛇](https://blog.csdn.net/linxinloningg/article/details/107237768)
-    * [自动运行函数](https://blog.csdn.net/linxinloningg/article/details/121865816)
-    * [相关决策函数](
+  * [仓库：nano](https://github.com/linxinloningg/arduino_chip_core/tree/main/nano)
