@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>index</title>
+	<style>
+		*{padding: 0;margin: 0;}
+		body{font-family: "楷体";}
+
+
+		.title{
+			width: 100%;
+			height: 100px;
+			background-color: blue;
+			position: relative;}
+		.title div {
+			width: 50%;
+			height: 50px;
+			background-color:red;
+			position: absolute;
+			left:30%;}
+		.title div	p{
+			font-size: 20px;color: white;}
+
+
+		.notice{width: 100%;
+			height: 100px;
+			background-color:palegreen;
+			position: relative;}
+		.notice div{
+			display: inline-block;
+			width: 30%;
+			height: 100px;
+			background-color:green;
+			margin-left: 5px;}
+
+
+
+
+
+
+
+
+
+
+		.content{width: 100%;
+			height: 400px;
+			background-color:gold;
+			position: relative;}
+		.content div:nth-of-type(1){
+			width: 40%;
+			height: 400px;
+			background-color:blueviolet;
+			display: inline-block;
+			float: left;}
+		.content div:nth-of-type(1) div{
+			width: 80%;
+			height: 150px;
+			background-color:green;
+			float: left;
+			margin-top:50px;
+			margin-left:50px;}
+		.content form{box-sizing: content-box;}
+
+		.content div:nth-of-type(2){
+			width: 55%;
+			height: 400px;
+			background-color:dodgerblue;
+			display: inline-block;
+			box-sizing: border-box;}
+		.content div:nth-of-type(2) div{
+			width: 30%;
+			height: 200px;
+			background-color:red;display: inline-block;
+			float: left;
+			margin-left: 5px;
+			margin-top: 5px;}
+
+
+
+
+
+		.bottom{width: 100%;
+			height: 100px;
+			background-color:blue;
+			position: relative;}
+	</style>
+	
+</head>
+
+<body>
+	<div class="title">
+		<div><p>智能家居管理系统</p></div>
+	</div>
+
+	<div class="notice">
+		<div><span>天气</span></div>
+		<div><span>日期</span></div>
+		<div><span>提醒</span></div>
+	</div>
+
+	<div class="content">
+		<div>
+			<h3>wifi管理:</h3>
+
+			<div>
+				<span>已连接wifi：<span id="WiFiname">Null</span></span>
+				<br>
+				<span>LOCAL_IP：<span id="WiFiip">Null</span></span>
+				<br>
+				<span>发现的wifi：</span>
+			</div>
+
+			<div>
+			</div>
+
+		</div>
+		<div>
+			<div>
+				<p>灯控制</p>
+				<p>目前情况：<span id="LEDState">NA</span></p>
+				<button type="button" onclick="sendledData(1)">点亮 LED</button>
+				<button type="button" onclick="sendledData(0)">关闭 LED</button><br>
+
+			</div>
+
+			<div>
+				<p>室温控制</p>
+				<p>当前室温：<span id="Temperature">0</span></p>
+				<button type="button" onclick="sendtempData(1)">升高温度</button>
+				<button type="button" onclick="sendtempData(0)">降低温度</button><br>
+			</div>
+
+			<div>未开发功能...</div>
+			<div>
+				<p>室内空气湿度控制</p>
+				<p>当前室内空气湿度程度：%<span id="Humidity">0</span></p>
+				<button type="button" onclick="sendhumData(1)">升高空气湿度</button>
+				<button type="button" onclick="sendhumData(0)">降低空气温度</button><br>
+			</div>
+
+			<div>
+				<p>室内通光程度控制</p>
+				<p>通光程度：%</p>
+				<p>窗帘开合程度：<span id="curtainState">NA</span></p>
+				<button type="button" onclick="sendCURData(1)">拉开窗帘</button>
+				<button type="button" onclick="sendCURData(0)">拉上窗帘</button><br>
+			</div>
+			<div>未开发功能...</div>
+		</div>
+	</div>
+
+	<div class="bottom">
+		<p>信息通知：版本为开发雏形，不具备完善功能。</p>
+	</div>
+
+	<script>
+		function sendledData(Data) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("LEDState").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "setLED?DATA="+Data, true);
+			xhttp.send();
+		}
+		function sendtempData(Data) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("Temperature").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "setTEMP?DATA="+Data, true);
+			xhttp.send();
+		}
+		function sendhumData(Data) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("Humidity").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "setHUM?DATA="+Data, true);
+			xhttp.send();
+		}
+		function sendCURData(Data) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("curtainState").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "setCURTAIN?DATA="+Data, true);
+			xhttp.send();
+		}
+
+		setInterval(function() {
+			// Call a function repetatively with 2 Second interval
+			gettempData();
+			getwifinameData();
+			getwifiipData();
+		}, 2000); //2000mSeconds update rate
+
+		function gettempData() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("Temperature").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "readtemperature", true);
+			xhttp.send();
+		}
+		function getwifinameData() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("WiFiname").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "readWiFiname", true);
+			xhttp.send();
+		}
+		function getwifiipData() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("WiFiip").innerHTML =
+							this.responseText;
+				}
+			};
+			xhttp.open("GET", "readWiFiip", true);
+			xhttp.send();
+		}
+	</script>
+</body>
+</html>
